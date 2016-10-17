@@ -1,0 +1,3 @@
+#!/bin/bash
+# deploy documentation to githubpages
+bin/travis-sphinx deploy

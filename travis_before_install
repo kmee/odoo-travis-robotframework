@@ -1,0 +1,38 @@
+#!/bin/bash
+
+set -e
+
+
+## init display
+#export DISPLAY=:99.0
+#sh -e /etc/init.d/xvfb start
+#sleep 5
+#
+## Install driver to make selenium work
+#wget http://chromedriver.storage.googleapis.com/2.21/chromedriver_linux64.zip
+#unzip chromedriver_linux64.zip
+#sudo chmod u+x chromedriver
+#sudo mv chromedriver /usr/bin/
+
+# fake db to display db selection on odoo screen FIX ME on robot files
+createdb fakedb
+createdb openerp_test
+
+# OCA 
+git clone https://github.com/OCA/maintainer-quality-tools.git ${HOME}/maintainer-quality-tools
+export PATH=${HOME}/maintainer-quality-tools/travis:${PATH}
+# Install less
+ln -s `which nodejs` $HOME/maintainer-quality-tools/travis/node
+npm install -g less less-plugin-clean-css
+
+
+# Workaround to force using system site packages (see https://github.com/Shippable/support/issues/241#issuecomment-57947925)
+rm -f $VIRTUAL_ENV/lib/python2.7/no-global-site-packages.txt
+mkdir -p $HOME/buildout-cache/{eggs,downloads}
+virtualenv . --system-site-packages
+bin/pip install --upgrade pip setuptools zc.buildout
+
+
+# Using travis buildout config
+mv travis.cfg.in buildout.cfg
+
