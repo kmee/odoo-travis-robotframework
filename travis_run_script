@@ -1,7 +1,5 @@
 #!/bin/bash
 
-# Test odoo as usual
-bin/test_openerp -d openerp_test -i account,sale,stock
 # Start odoo: fixme with supervisor for example
 bin/supervisord
 sleep 5

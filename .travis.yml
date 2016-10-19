@@ -42,8 +42,13 @@ install:
   - ./travis_install
 
 script:
-  - ./travis_run_script
+  - bin/test_openerp -d openerp_test -i account,sale,stock,web_selenium
+  - bin/supervisord
+  - sleep 5
+  - bin/pybot -v CONFIG:config_80.py robot/sale_stock_invoice_workflow.robot
+  - bin/travis-sphinx build
 
 after_success:
-  - ./travis_after_success
+  - bin/travis-sphinx deploy
+
 
