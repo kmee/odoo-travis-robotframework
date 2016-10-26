@@ -15,7 +15,6 @@ set -e
 #sudo mv chromedriver /usr/bin/
 
 # fake db to display db selection on odoo screen FIX ME on robot files
-createdb fakedb
 createdb openerp_test
 
 # OCA 

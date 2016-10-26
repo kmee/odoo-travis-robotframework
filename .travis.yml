@@ -42,10 +42,10 @@ install:
   - ./travis_install
 
 script:
-  - bin/test_openerp -d openerp_test -i account,sale,stock,web_selenium
-  - bin/supervisord
-  - sleep 5
-  - bin/pybot -v CONFIG:config_80.py robot/sale_stock_invoice_workflow.robot
+  - bin/test_openerp -d openerp_test -i base,web_selenium
+  - bin/supervisorctl start openerp
+  - bin/pybot docs
+  - bin/supervisorctl stop openerp
   - bin/travis-sphinx build
 
 after_success:
