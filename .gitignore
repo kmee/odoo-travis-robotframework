@@ -62,8 +62,7 @@ instance/
 
 # Sphinx documentation
 docs/build/
-docs/_static/imgs/
-
+docs/source/_static/imgs/
 
 
 # IPython Notebook

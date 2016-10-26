@@ -42,10 +42,8 @@ install:
   - ./travis_install
 
 script:
-  - bin/test_openerp -d openerp_test -i base,web_selenium
-  - bin/supervisorctl start openerp
+  - ./travis_run_script
   - bin/pybot docs
-  - bin/supervisorctl stop openerp
   - bin/travis-sphinx build
 
 after_success:
