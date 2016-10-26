@@ -4,6 +4,7 @@
 bin/supervisord
 sleep 5
 # robotframework tests
-bin/pybot -v CONFIG:config_80.py robot/sale_stock_invoice_workflow.robot
+#bin/pybot -v CONFIG:config_80.py robot/sale_stock_invoice_workflow.robot
+bin/pybot --include Screenshot docs
 # make documentation
 bin/travis-sphinx build
