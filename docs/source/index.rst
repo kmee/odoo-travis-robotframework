@@ -14,6 +14,8 @@ Esta é a documentação oficial da localização brasileira:
    :maxdepth: 2
    :numbered:
 
-   sale/index
-
+   login/index
+   partner/index
+..   sale/index
+   
 

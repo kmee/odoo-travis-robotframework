@@ -46,7 +46,7 @@ extensions = [
 sphinxcontrib_robotframework_enabled = True
 
 # Hide all Robot Framework syntax by default
-sphinxcontrib_robotframework_quiet = True
+# sphinxcontrib_robotframework_quiet = True
 
 # Configure Robot Frameowrk tests to use Firefox
 SERVER = "localhost"

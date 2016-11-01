@@ -2,19 +2,6 @@ Pedido de Venda
 ===============
 
 .. code:: robotframework
-    :class: hidden
-
-    *** Settings ***
-
-    Documentation  Full workflow demonstration
-    Resource  ../robot.rst
-
-    *** Test Cases ***
-
-    Valid Login
-        Login
-
-.. code:: robotframework
 
     | Criaçao de um pedido de venda |                      |                  |                           |
     |-------------------------------|----------------------|------------------|---------------------------|

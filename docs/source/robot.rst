@@ -14,8 +14,6 @@
 
 
     *** Keywords ***
-    Suite Teardown
-       Close All Browsers
 
     Set Up
     #ff default caps shoul be always present
@@ -79,6 +77,7 @@
     Selecione o subMenu    [Arguments]    ${menu}
         Click Link				xpath=//td[contains(@class,'oe_leftbar')]//ul/li/a[descendant::span/text()[normalize-space()='${menu}']]
         Wait Until Page Contains Element	xpath=//div[contains(@class,'oe_view_manager_body')]
+        Sleep    1s
 
     SubMenuXMLid    [Arguments]		${Name}
         ${MODULE}=              Fetch From Left            ${Name}              .
