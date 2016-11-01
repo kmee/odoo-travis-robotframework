@@ -2,6 +2,3 @@
 
 bin/buildout -N -t 20
 
-#Configure robot after running buildout
-cp robot/config_80.py_template robot/config_80.py
-sed -i 's#ODOO_DB = "demo"#ODOO_DB = "openerp_test"#g' robot/config_80.py
