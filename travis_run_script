@@ -1,14 +1,5 @@
 #!/bin/bash
 
-## Start odoo: fixme with supervisor for example
-#bin/supervisord
-#sleep 5
-## robotframework tests
-##bin/pybot -v CONFIG:config_80.py robot/sale_stock_invoice_workflow.robot
-#bin/pybot --include Screenshot docs
-## make documentation
-#bin/travis-sphinx build
-
 set -e
 
 bin/test_openerp -d openerp_test -i base,web_selenium
