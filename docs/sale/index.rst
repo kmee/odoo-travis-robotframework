@@ -2,6 +2,7 @@ Pedido de Venda
 ===============
 
 .. code:: robotframework
+    :class: hidden
 
     *** Settings ***
 
@@ -13,34 +14,61 @@ Pedido de Venda
     Valid Login
         Login
 
+.. code:: robotframework
+
+    | Criaçao de um pedido de venda |                      |                  |                           |
+    |-------------------------------|----------------------|------------------|---------------------------|
+    |                               | Selecione o Menu     | Sales            |                           |
+    |                               | Selecione o SubMenu  | Sales Orders     |                           |
+    |                               | Ativar o Botão       | Create           |                           |
+    |                               | Selecione o registro | partner_id       | Cliente 1 SP Contribuinte |
+    |                               | Date                 | date_order       | 08/30/2015                |
+    |                               | Char                 | client_order_ref | AGR001                    |
+
+Bla, Bla, Bla.
+
 .. figure:: _screenshots/sale.png
 
-.. figure:: _screenshots/line.png
+.. code:: robotframework
+    :class: hidden
 
-.. figure:: _screenshots/other.png
+      Capture viewport screenshot  _screenshots/sale.png
 
-.. figure:: _screenshots/save.png
+Item no pedido de venda
+#######################
 
 .. code:: robotframework
 
-    * Test Cases *
+    Item no pedido
 
-    Pedido de Venda
-        MainMenu                    Sales
-        SubMenu                     Sales Orders
-        Button                      oe_list_add
-        Many2OneSelect              partner_id          Cliente 1 SP Contribuinte
-        Date                        date_order          08/30/2015
-        Char                        client_order_ref    SP001
-        Capture viewport screenshot  _screenshots/sale-header.png
-        NewOne2Many                 order_line
-        Many2OneSelect              product_id	        [M-Opt] Mouse, Optical
-        Char                        product_uom_qty     2
-        Capture viewport screenshot  _screenshots/line.png
-        Button	            	    oe_form_button_save_and_close
-        NotebookPage                Other Information
-        Select-Option       	    picking_policy	    Deliver all products at once
-        Select-Option       	    order_policy	    On Delivery Order
-        Capture viewport screenshot  _screenshots/other.png
-        Button	            	    oe_form_button_save
-        Capture viewport screenshot  _screenshots/saved.png
+        Adicione um item        order_line
+        Selecione o registro    product_id	                    [M-Opt] Mouse, Optical
+        Char                    product_uom_qty                 2
+        Ativar o Botão	        Save & Close
+
+.. figure:: _screenshots/item.png
+
+.. code:: robotframework
+    :class: hidden
+
+      Capture viewport screenshot  _screenshots/item.png
+
+
+Dados Adicionais
+################
+
+.. code:: robotframework
+
+    Dados adicionais
+
+        Clique na aba           Other Information
+        Escolha a opção         picking_policy	                Deliver all products at once
+        Escolha a opção         order_policy	                On Delivery Order
+        Button	                sale.order	                    oe_form_button_save
+
+.. figure:: _screenshots/other.png
+
+.. code:: robotframework
+    :class: hidden
+
+      Capture viewport screenshot  _screenshots/other.png

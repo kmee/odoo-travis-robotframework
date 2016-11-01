@@ -1,4 +1,5 @@
 .. code:: robotframework
+    :class: hidden
 
     *** Settings ***
 
@@ -69,13 +70,13 @@
             Disconnect from Database
 
     # checked: 8.0 ok
-    MainMenu    [Arguments]    ${menu}
+    Selecione o menu    [Arguments]    ${menu}
         Click Link				xpath=//div[@id='oe_main_menu_placeholder']/ul/li/a[descendant::span/text()[normalize-space()='${menu}']]
         Wait Until Page Contains Element	xpath=//div[contains(@class, 'oe_secondary_menus_container')]/div[contains(@class, 'oe_secondary_menu') and not(contains(@style, 'display: none'))]
         ElementPostCheck
 
     # checked: 8.0 ok
-    SubMenu    [Arguments]    ${menu}
+    Selecione o subMenu    [Arguments]    ${menu}
         Click Link				xpath=//td[contains(@class,'oe_leftbar')]//ul/li/a[descendant::span/text()[normalize-space()='${menu}']]
         Wait Until Page Contains Element	xpath=//div[contains(@class,'oe_view_manager_body')]
 
@@ -114,77 +115,76 @@
     #   Wait Until Page Contains Element	xpath=//div[contains(@class,'openerp_webclient_container') and not(contains(@class, 'oe_wait'))]
 
 
-    WriteInField                [Arguments]         ${fieldname}    ${value}
-        ElementPreCheck         xpath=//div[contains(@class,'openerp')][last()]//input[@data-bt-testing-name='${fieldname}']|textarea[@data-bt-testing-name='${fieldname}']
-        Input Text              xpath=//div[contains(@class,'openerp')][last()]//input[@data-bt-testing-name='${fieldname}']|textarea[@data-bt-testing-name='${fieldname}']    ${value}
+    WriteInField                [Arguments]     ${model}    ${fieldname}    ${value}
+        ElementPreCheck         xpath=//div[contains(@class,'openerp')][last()]//input[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${fieldname}']|textarea[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${fieldname}']
+        Input Text              xpath=//div[contains(@class,'openerp')][last()]//input[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${fieldname}']|textarea[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${fieldname}']    ${value}
 
     # checked: 8.0 ok
-    Button                      [Arguments]         ${button_name}
+    Button                      [Arguments]     ${model}    ${button_name}
          Wait Until Page Contains Element    xpath=//div[contains(@class,'oe_pager_value')]
          Click Button           xpath=//div[contains(@class,'openerp')][last()]//*[not(contains(@style,'display:none'))]//button[@data-bt-testing-name='${button_name}']
          Wait For Condition     return true;    20.0
          ElementPostCheck
-
     # checked: 8.0 ok
-    Many2OneSelect    [Arguments]        ${field}    ${value}
+    Selecione o registro    [Arguments]    ${field}    ${value}
         ElementPreCheck	    xpath=//div[contains(@class,'openerp')][last()]//input[@data-bt-testing-name='${field}']
         Input Text		    xpath=//div[contains(@class,'openerp')][last()]//input[@data-bt-testing-name='${field}']    ${value}
         Click Link             xpath=//ul[contains(@class,'ui-autocomplete') and not(contains(@style,'display: none'))]/li[1]/a
         Textfield Should Contain    xpath=//div[contains(@class,'openerp')][last()]//input[@data-bt-testing-name='${field}']    ${value}
         ElementPostCheck
 
-    Date    [Arguments]        ${field}    ${value}
+    Date    [Arguments]    ${field}    ${value}
         ElementPreCheck        xpath=//div[contains(@class,'openerp')][last()]//input[@data-bt-testing-name='${field}']
         Input Text             xpath=//div[contains(@class,'openerp')][last()]//input[@data-bt-testing-name='${field}']    ${value}
         ElementPostCheck
 
-    Char    [Arguments]        ${field}    ${value}
+    Char    [Arguments]    ${field}    ${value}
         ElementPreCheck        xpath=//div[contains(@class,'openerp')][last()]//input[@data-bt-testing-name='${field}']
-        Execute Javascript     $("div.openerp:last input[data-bt-testing-model_name=''][data-bt-testing-name='${field}']").val(''); return true;
+        Execute Javascript     $("div.openerp:last input[data-bt-testing-name='${field}']").val(''); return true;
         Input Text             xpath=//div[contains(@class,'openerp')][last()]//input[@data-bt-testing-name='${field}']    ${value}
         ElementPostCheck
 
-    Float    [Arguments]        ${field}    ${value}
-        ElementPreCheck        xpath=//div[contains(@class,'openerp')][last()]//input[@data-bt-testing-name='${field}']
-        Input Text             xpath=//div[contains(@class,'openerp')][last()]//input[@data-bt-testing-name='${field}']    ${value}
+    Float    [Arguments]    ${model}    ${field}    ${value}
+        ElementPreCheck        xpath=//div[contains(@class,'openerp')][last()]//input[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${field}']
+        Input Text             xpath=//div[contains(@class,'openerp')][last()]//input[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${field}']    ${value}
         ElementPostCheck
 
-    Text    [Arguments]        ${field}    ${value}
+    Text    [Arguments]    ${model}    ${field}    ${value}
         ElementPreCheck        xpath=//div[contains(@class,'openerp')][last()]//textarea[@data-bt-testing-name='${field}']
         Input Text             xpath=//div[contains(@class,'openerp')][last()]//textarea[@data-bt-testing-name='${field}']    ${value}
         ElementPostCheck
 
-    Select-Option    [Arguments]        ${field}    ${value}
+    Escolha a opção    [Arguments]    ${field}    ${value}
         ElementPreCheck        xpath=//div[contains(@class,'openerp')][last()]//select[@data-bt-testing-name='${field}']
         Select From List By Label	xpath=//div[contains(@class,'openerp')][last()]//select[@data-bt-testing-name='${field}']    ${value}
         ElementPostCheck
 
-    Checkbox    [Arguments]        ${field}
+    Checkbox    [Arguments]    ${model}    ${field}
         ElementPreCheck        xpath=//div[contains(@class,'openerp')][last()]//input[@type='checkbox' and @data-bt-testing-name='${field}']
         Checkbox Should Not Be Selected	xpath=//div[contains(@class,'openerp')][last()]//input[@type='checkbox' and @data-bt-testing-name='${field}']
         Click Element          xpath=//div[contains(@class,'openerp')][last()]//input[@type='checkbox' and @data-bt-testing-name='${field}']
         ElementPostCheck
 
-    NotebookPage    [Arguments]    ${model}=None
-        Wait For Condition return true;
+    Clique na aba    [Arguments]    ${model}=None
+        Wait For Condition      return true;
 
     # checked: 8.0 ok
-    NewOne2Many    [Arguments]        ${field}
+    Adicione um item    [Arguments]    ${field}
         ElementPreCheck        xpath=//div[contains(@class,'openerp')][last()]//div[contains(@class,'oe_form_field_one2many')]/div[@data-bt-testing-name='${field}']//tr/td[contains(@class,'oe_form_field_one2many_list_row_add')]/a
         Click Link             xpath=//div[contains(@class,'openerp')][last()]//div[contains(@class,'oe_form_field_one2many')]/div[@data-bt-testing-name='${field}']//tr/td[contains(@class,'oe_form_field_one2many_list_row_add')]/a
         ElementPostCheck
 
-    One2ManySelectRecord  [Arguments]        ${field}    ${submodel}    @{fields}
-        ElementPreCheck    xpath=//div[@data-bt-testing-name='${field}']
+    One2ManySelectRecord  [Arguments]    ${model}    ${field}    ${submodel}    @{fields}
+        ElementPreCheck    xpath=//div[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${field}']
 
         # Initialize variable
         ${pre_check_xpath}=    Set Variable
         ${post_check_xpath}=    Set Variable
         ${pre_click_xpath}=    Set Variable
         ${post_click_xpath}=    Set Variable
-        ${pre_check_xpath}=    Catenate    (//div[@data-bt-testing-name='${field}']//table[contains(@class,'oe_list_content')]//tr[descendant::td[
+        ${pre_check_xpath}=    Catenate    (//div[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${field}']//table[contains(@class,'oe_list_content')]//tr[descendant::td[
         ${post_check_xpath}=    Catenate    ]])[1]
-        ${pre_click_xpath}=    Catenate    (//div[@data-bt-testing-name='${field}']//table[contains(@class,'oe_list_content')]//tr[
+        ${pre_click_xpath}=    Catenate    (//div[@data-bt-testing-model_name='${model}' and @data-bt-testing-name='${field}']//table[contains(@class,'oe_list_content')]//tr[
         ${post_click_xpath}=    Catenate    ]/td)[1]
         ${xpath}=    Set Variable
 
@@ -213,7 +213,7 @@
         ElementPostCheck
 
 
-    SelectListView  [Arguments]        @{fields}
+    SelectListView  [Arguments]    ${model}    @{fields}
         # Initialize variable
         ${xpath}=    Set Variable
 
@@ -221,7 +221,7 @@
         : FOR    ${field}    IN  @{fields}
         # Split the string in fieldname=fieldvalue
         \    ${fieldname}    ${fieldvalue}=    Split String    ${field}    separator==    max_split=1
-        \    ${fieldxpath}=    Catenate    @data-field='${fieldname}'
+        \    ${fieldxpath}=    Catenate    @data-bt-testing-model_name='${model}' and @data-field='${fieldname}'
 
              # We first check if this field is in the view and visible
              # otherwise a single field can break the whole command
@@ -266,3 +266,6 @@
         Click Link              xpath=//ul[contains(@class, 'ui-autocomplete') and not(contains(@style, 'display: none'))]//a[self::*/text()='${value}']    don't wait
         ElementPostCheck
 
+    Ativar o Botão
+        [Arguments]    ${name}
+        Click Button    xpath=//button[normalize-space(.)='${name}']
