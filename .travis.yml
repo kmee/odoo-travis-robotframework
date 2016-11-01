@@ -43,7 +43,7 @@ install:
 
 script:
   - ./travis_run_script
-  - bin/sphinx-build -b html docs target
+  - bin/sphinx-build -b html docs/source target/doc/build
 
 after_success:
   - bin/travis-sphinx deploy
