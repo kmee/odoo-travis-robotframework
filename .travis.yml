@@ -43,8 +43,7 @@ install:
 
 script:
   - ./travis_run_script
-  - bin/pybot docs
-  - bin/travis-sphinx build
+  - bin/sphinx-build -b html docs target
 
 after_success:
   - bin/travis-sphinx deploy

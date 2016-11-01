@@ -1,0 +1,74 @@
+Pedido de Venda
+===============
+
+.. code:: robotframework
+    :class: hidden
+
+    *** Settings ***
+
+    Documentation  Full workflow demonstration
+    Resource  ../robot.rst
+
+    *** Test Cases ***
+
+    Valid Login
+        Login
+
+.. code:: robotframework
+
+    | Criaçao de um pedido de venda |                      |                  |                           |
+    |-------------------------------|----------------------|------------------|---------------------------|
+    |                               | Selecione o Menu     | Sales            |                           |
+    |                               | Selecione o SubMenu  | Sales Orders     |                           |
+    |                               | Ativar o Botão       | Create           |                           |
+    |                               | Selecione o registro | partner_id       | Cliente 1 SP Contribuinte |
+    |                               | Date                 | date_order       | 08/30/2015                |
+    |                               | Char                 | client_order_ref | AGR001                    |
+
+Bla, Bla, Bla.
+
+.. figure:: _screenshots/sale.png
+
+.. code:: robotframework
+    :class: hidden
+
+      Capture viewport screenshot  _screenshots/sale.png
+
+Item no pedido de venda
+#######################
+
+.. code:: robotframework
+
+    Item no pedido
+
+        Adicione um item        order_line
+        Selecione o registro    product_id	                    [M-Opt] Mouse, Optical
+        Char                    product_uom_qty                 2
+        Ativar o Botão	        Save & Close
+
+.. figure:: _screenshots/item.png
+
+.. code:: robotframework
+    :class: hidden
+
+      Capture viewport screenshot  _screenshots/item.png
+
+
+Dados Adicionais
+################
+
+.. code:: robotframework
+
+    Dados adicionais
+
+        Clique na aba           Other Information
+        Escolha a opção         picking_policy	                Deliver all products at once
+        Escolha a opção         order_policy	                On Delivery Order
+        Button	                sale.order	                    oe_form_button_save
+
+.. figure:: _screenshots/other.png
+
+.. code:: robotframework
+    :class: hidden
+
+      Capture viewport screenshot  _screenshots/other.png

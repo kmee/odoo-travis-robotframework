@@ -39,7 +39,31 @@ extensions = [
     'sphinx.ext.imgmath',
     'sphinx.ext.ifconfig',
     'sphinx.ext.githubpages',
+    'sphinxcontrib_robotframework',
 ]
+
+# Enable Robot Framework tests during Sphinx compilation
+sphinxcontrib_robotframework_enabled = True
+
+# Hide all Robot Framework syntax by default
+sphinxcontrib_robotframework_quiet = True
+
+# Configure Robot Frameowrk tests to use Firefox
+SERVER = "localhost"
+PORT = "8069"
+
+sphinxcontrib_robotframework_variables = {
+    'SELENIUM_DELAY': 0,
+    'SELENIUM_TIMEOUT': 20,
+    'Marionette': False,
+    'SERVER':  SERVER,
+    'PORT': PORT,
+    'ODOO_URL': "http://" + SERVER + ":" + PORT,
+    'ODOO_DB':  None,
+    'ODOO_USER': "admin",
+    'ODOO_PASSWORD': "admin",
+    'BROWSER': 'chrome',
+}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -58,7 +82,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'Documentação Odoo Brasil - Localização Brasileira'
+project = u'Documentação Odoo Brasil'
 copyright = u'2016, Odoo Brasil'
 author = u'Luis Felipe Mileo<mileo@kmee.com.br>, Leonardo Rochael<leorochael@gmail.com>'
 
@@ -76,7 +100,7 @@ release = u'2016.10.13'
 #
 # This is also used if you do content translation via gettext catalogs.
 # Usually you set "language" from the command line for these cases.
-language = 'pt-BR'
+#language = 'pt-BR'
 
 # There are two options for replacing |today|: either, you set today to some
 # non-false value, then it is used:
@@ -90,7 +114,11 @@ language = 'pt-BR'
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This patterns also effect to html_static_path and html_extra_path
-exclude_patterns = []
+exclude_patterns = [
+    'robot.rst',
+    '*.txt',
+    '*.GPL',
+]
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
@@ -358,7 +386,7 @@ html_theme_options = {
     'navbar_sidebarrel': True,
 
     # Render the current pages TOC in the navbar. (Default: true)
-    'navbar_pagenav': False,
+    'navbar_pagenav': True,
 
     # Tab name for the current pages TOC. (Default: "Page")
     'navbar_pagenav_name': "Page",

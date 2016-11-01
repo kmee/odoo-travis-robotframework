@@ -63,7 +63,7 @@ instance/
 # Sphinx documentation
 docs/build/
 docs/source/_static/imgs/
-
+docs/*/_screenshots/
 
 # IPython Notebook
 .ipynb_checkpoints
