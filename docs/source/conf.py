@@ -62,7 +62,7 @@ sphinxcontrib_robotframework_variables = {
     'ODOO DB':  "openerp_test",
     'ODOO_USER': "admin",
     'ODOO_PASSWORD': "admin",
-    "BROWSER": "Firefox",
+    'BROWSER': "Firefox",
 }
 
 # Add any paths that contain templates here, relative to this directory.
