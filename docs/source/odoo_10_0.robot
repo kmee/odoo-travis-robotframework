@@ -1,7 +1,10 @@
+.. code:: robotframework
+    :class: hidden
 
     *** Settings ***
 
     Documentation   Basic test for odoo v10. Every Selenium update should pass it
+    Resource       odoo_10_0.robot
     Library        String
     Variables      conf.py
     Library        connection_erp.py
