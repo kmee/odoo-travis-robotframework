@@ -1,11 +1,12 @@
 Parceiro
-=====
+========
 .. code:: robotframework
     :class: hidden
 
     *** Settings ***
 
     Resource  ../test_odoo_10_0.rst
+
     *** Test Cases ***
 
     | Criaçao de um parceiro        |                      |                  |                           |

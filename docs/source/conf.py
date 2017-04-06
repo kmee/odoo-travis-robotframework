@@ -55,14 +55,15 @@ PORT = "8069"
 sphinxcontrib_robotframework_variables = {
     'SELENIUM_DELAY': 0,
     'SELENIUM_TIMEOUT': 20,
-    'Marionette': False,
+    'Marionette': True,
     'SERVER':  SERVER,
     'PORT': PORT,
     'ODOO_URL': "http://" + SERVER + ":" + PORT,
-    'ODOO_DB':  None,
+    'ODOO_DB':  "demo_v10",
     'ODOO_USER': "admin",
     'ODOO_PASSWORD': "admin",
-    'BROWSER': 'chrome',
+    'BROWSER': 'Firefox',
+    'TRUE':True,
 }
 
 # Add any paths that contain templates here, relative to this directory.

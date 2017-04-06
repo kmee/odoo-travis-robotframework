@@ -5,7 +5,7 @@ Login
 
     *** Settings ***
 
-    Resource  ../robot.rst
+    Resource  ../odoo_10_0.rst
 
     *** Test Cases ***
 
