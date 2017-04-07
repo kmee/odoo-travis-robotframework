@@ -7,11 +7,11 @@ Documentação Odoo Brasil - Localização Brasileira
 
 Esta é a documentação oficial da localização brasileira:
 
-.. include:: test_odoo_10_0.rst
+.. include:: robot.rst
 .. toctree::
    :maxdepth: 2
    :numbered:
 
    login/index
-   partner/index
 ..   sale/index
+

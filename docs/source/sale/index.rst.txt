@@ -12,7 +12,6 @@ Pedido de Venda
     |                               | Date                 | date_order       | 08/30/2015                |
     |                               | Char                 | client_order_ref | AGR001                    |
 
-Bla, Bla, Bla.
 
 .. figure:: _screenshots/sale.png
 

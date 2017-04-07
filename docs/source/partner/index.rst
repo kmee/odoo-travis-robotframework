@@ -5,7 +5,7 @@ Parceiro
 
     *** Settings ***
 
-    Resource  ../test_odoo_10_0.rst
+    Resource  ../robot.rst
 
     *** Test Cases ***
 
