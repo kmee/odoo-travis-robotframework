@@ -31,9 +31,9 @@
         log to console     Virtual Display On
 
     ELS-Website-Login    [Arguments]    ${user}=${ODOO_USER}    ${password}=${ODOO_PASSWORD}    ${db}=${ODOO_DB}
-        Open Browser                        ${ODOO URL}  browser=${BROWSER}
+        Open Browser                        ${ODOO_URL}  browser=${BROWSER}
         Maximize Browser Window
-        Go To                               ${ODOO URL}
+        Go To                               ${ODOO_URL}
         Set Selenium Speed                  ${SELENIUM_DELAY}
         Set Selenium Timeout                ${SELENIUM_TIMEOUT}
         Set Selenium Implicit Wait          ${SELENIUM_TIMEOUT}
@@ -45,9 +45,9 @@
 
     # checked: 8.0 ok
     Login    [Arguments]    ${user}=${ODOO_USER}    ${password}=${ODOO_PASSWORD}    ${db}=${ODOO_DB}
-        Open Browser                        ${ODOO URL}  browser=${BROWSER}
+        Open Browser                        ${ODOO_URL}  browser=${BROWSER}
         Maximize Browser Window
-        Go To                               ${ODOO URL}
+        Go To                               ${ODOO_URL}
         Set Selenium Speed                  ${SELENIUM_DELAY}
         Set Selenium Timeout                ${SELENIUM_TIMEOUT}
         Set Selenium Implicit Wait          ${SELENIUM_TIMEOUT}

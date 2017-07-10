@@ -57,7 +57,7 @@ Instalando
 Executando os testes
 --------------------
 
-	 bin/sphinx-build -b html docs/source target/doc/build
+	 bin/sphinx-build -b html docs/source target/doc/build -D sphinxcontrib_robotframework_variables.'ODOO_DB'='seu banco de dados' -D sphinxcontrib_robotframework_variables.'ODOO_PASSWORD'='sua senha'
 
 - Dentro da pasta: target/doc/build esta localizado o arquivo index.html que contem a documentação gerada.
 

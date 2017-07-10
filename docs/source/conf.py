@@ -62,7 +62,7 @@ sphinxcontrib_robotframework_variables = {
     'ODOO_DB':  None,
     'ODOO_USER': "admin",
     'ODOO_PASSWORD': "admin",
-    'BROWSER': 'chrome',
+    'BROWSER': 'Firefox',
 }
 
 # Add any paths that contain templates here, relative to this directory.
